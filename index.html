@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Kroah Maëva Karlyne ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:
+radial-gradient(circle,#65002d,#000);
+font-family:Georgia,serif;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+
+/* écran cinéma */
+
+.cinema{
+position:absolute;
+inset:0;
+background:black;
+animation:fade 3s forwards;
+}
+
+@keyframes fade{
+from{opacity:1}
+to{opacity:0}
+}
+
+
+/* photo */
+
+.photo{
+width:300px;
+height:420px;
+object-fit:cover;
+border-radius:30px;
+
+box-shadow:
+0 0 20px #ff4da6,
+0 0 70px red;
+
+animation:
+zoom 10s infinite alternate,
+apparition 3s;
+}
+
+
+@keyframes zoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.15);
+}
+}
+
+
+@keyframes apparition{
+from{
+opacity:0;
+filter:blur(30px);
+}
+to{
+opacity:1;
+filter:blur(0);
+}
+}
+
+
+/* texte */
+
+.message{
+
+position:absolute;
+bottom:70px;
+
+text-align:center;
+
+font-size:28px;
+
+text-shadow:
+0 0 10px pink,
+0 0 30px red;
+
+animation:
+apparaitre 5s infinite;
+
+}
+
+
+@keyframes apparaitre{
+
+0%{
+opacity:0;
+transform:translateY(50px);
+}
+
+30%,80%{
+opacity:1;
+transform:translateY(0);
+}
+
+100%{
+opacity:0;
+}
+
+}
+
+
+
+/* étoiles */
+
+.star{
+
+position:absolute;
+color:white;
+font-size:15px;
+
+animation:
+tomber 6s linear infinite;
+
+}
+
+
+@keyframes tomber{
+
+from{
+transform:translateY(-10vh);
+opacity:1;
+}
+
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+
+}
+
+
+
+/* coeurs */
+
+.heart{
+
+position:absolute;
+font-size:35px;
+
+animation:
+monter 8s linear infinite;
+
+}
+
+
+@keyframes monter{
+
+from{
+bottom:-10vh;
+opacity:1;
+}
+
+to{
+bottom:110vh;
+opacity:0;
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="cinema"></div>
+
+
+<img class="photo" src="maeva.jpg">
+
+
+<div class="message">
+
+Kroah Maëva Karlyne ❤️
+
+<br><br>
+
+✨ Une âme rare dans un monde rempli de personnes ✨
+
+<br>
+
+💍 Une histoire qui mérite son propre film 💍
+
+</div>
+
+
+
+<script>
+
+
+// Coeurs
+
+for(let i=0;i<30;i++){
+
+let coeur=document.createElement("div");
+
+coeur.className="heart";
+
+coeur.innerHTML="❤️";
+
+coeur.style.left=Math.random()*100+"%";
+
+coeur.style.animationDelay=
+Math.random()*5+"s";
+
+document.body.appendChild(coeur);
+
+}
+
+
+// Etoiles
+
+for(let i=0;i<40;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.innerHTML="✦";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.animationDelay=
+Math.random()*6+"s";
+
+document.body.appendChild(star);
+
+}
+
+
+// voix cinéma
+
+setTimeout(()=>{
+
+let voix=new SpeechSynthesisUtterance(
+
+"Kroah Maëva Karlyne. Cette création est un petit film créé spécialement pour toi. Certaines personnes arrivent dans nos vies et rendent chaque moment plus beau."
+
+);
+
+voix.lang="fr-FR";
+voix.rate=0.75;
+voix.pitch=1.3;
+
+speechSynthesis.speak(voix);
+
+
+},4000);
+
+
+</script>
+
+
+</body>
+</html>
