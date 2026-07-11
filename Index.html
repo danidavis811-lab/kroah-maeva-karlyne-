@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kroah Maëva Karlyne ❤️</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        height: 100vh;
+        overflow: hidden;
+        background: radial-gradient(circle at center, #65002d, #000);
+        font-family: Georgia, serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cinema {
+        position: absolute;
+        inset: 0;
+        background: black;
+        animation: fadeOut 3s forwards;
+        z-index: 5;
+    }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+    .photo {
+        width: 300px;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 30px;
+        box-shadow: 0 0 20px #ff4da6, 0 0 70px red;
+        animation: zoom 10s infinite alternate, apparition 3s;
+        z-index: 2;
+    }
+    @keyframes zoom { from { transform: scale(1); } to { transform: scale(1.15); } }
+    @keyframes apparition { from { opacity: 0; filter: blur(30px); } to { opacity: 1; filter: blur(0); } }
+
+    .message {
+        position: absolute;
+        bottom: 70px;
+        width: 100%;
+        text-align: center;
+        font-size: 28px;
+        text-shadow: 0 0 10px pink, 0 0 30px red;
+        animation: apparaitre 5s infinite;
+        z-index: 2;
+    }
+    @keyframes apparaitre {
+        0% { opacity: 0; transform: translateY(50px); }
+        30%, 80% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; }
+    }
+
+    .star { position: absolute; color: white; font-size: 15px; animation: tomber 6s linear infinite; }
+    @keyframes tomber { from { transform: translateY(-10vh); opacity: 1; } to { transform: translateY(110vh); opacity: 0; } }
+
+    .heart { position: absolute; font-size: 35px; animation: monter 8s linear infinite; }
+    @keyframes monter { from { bottom: -10vh; opacity: 1; } to { bottom: 110vh; opacity: 0; } }
+
+    #playBtn {
+        position: absolute; top: 20px; padding: 12px 25px; background: #ff4da6; 
+        border: none; border-radius: 20px; color: white; font-size: 18px; 
+        cursor: pointer; z-index: 10; box-shadow: 0 0 15px #ff4da6;
+    }
+</style>
+</head>
+<body>
+
+<button id="playBtn">▶ Lancer le film</button>
+<div class="cinema"></div>
+
+<img class="photo" src="IMG-20260711-WA0169.jpg" alt="Maëva">
+
+<div class="message">
+    Kroah Maëva Karlyne ❤️<br><br>
+    ✨ Une âme rare dans un monde rempli de personnes ✨<br>
+    💍 Une histoire qui mérite son propre film 💍
+</div>
+
+<script>
+    // Coeurs qui montent
+    for(let i=0; i<30; i++) {
+        let coeur = document.createElement("div");
+        coeur.className = "heart";
+        coeur.innerHTML = "❤️";
+        coeur.style.left = Math.random() * 100 + "%";
+        coeur.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(coeur);
+    }
+
+    // Étoiles qui tombent
+    for(let i=0; i<40; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.innerHTML = "✦";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 6 + "s";
+        document.body.appendChild(star);
+    }
+
+    // Voix
+    document.getElementById('playBtn').onclick = () => {
+        document.getElementById('playBtn').style.display = 'none';
+        let voix = new SpeechSynthesisUtterance(
+            "Kroah Maëva Karlyne. Cette création est un petit film créé spécialement pour toi. Certaines personnes arrivent dans nos vies et rendent chaque moment plus beau."
+        );
+        voix.lang = "fr-FR";
+        voix.rate = 0.75;
+        voix.pitch = 1.3;
+        speechSynthesis.speak(voix);
+    };
+</script>
+</body>
+                           </html>
